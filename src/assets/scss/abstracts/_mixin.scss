@@ -1,35 +1,33 @@
-
-
-
 @mixin position($position: absolute, $top: null, $right: null, $bottom: null, $left: null, $z-index: initial) {
-    position: $position;
-    top: $top;
-    right: $right;
-    bottom: $bottom;
-    left: $left;
-    z-index: $z-index;
+	position: $position;
+	top: $top;
+	right: $right;
+	bottom: $bottom;
+	left: $left;
+	z-index: $z-index;
 }
 /* ===== Usage ===== */
 // .container {
 //     @include position(absolute, 60px, 0, 0, 0, 100);
 // }
 
-
 @mixin clear {
-    display: block; content: ''; clear: both;
+	display: block;
+	content: '';
+	clear: both;
 }
 
 @mixin flex-default {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
 }
 
 @mixin flex-center {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-wrap: wrap;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-wrap: wrap;
 }
 /* ===== Usage ===== */
 // .container {
@@ -37,37 +35,35 @@
 // }
 
 @mixin flex-column {
-    display: flex;
-    flex-direction: column;
+	display: flex;
+	flex-direction: column;
 }
 @mixin flex-center-column {
-    @include flex-center;
-    flex-direction: column;
+	@include flex-center;
+	flex-direction: column;
 }
 @mixin flex-center-vert {
-    display: flex;
-    align-items: center;
+	display: flex;
+	align-items: center;
 }
 @mixin flex-center-horiz {
-    display: flex;
-    justify-content: center;
+	display: flex;
+	justify-content: center;
 }
 
 @mixin flex-center-between {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    flex-wrap: wrap;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	flex-wrap: wrap;
 }
 
-
-
 @mixin transition($property...) {
-    -moz-transition:    $property;
-    -o-transition:      $property;
-    -webkit-transition: $property;
-    -ms-transition: $property;
-    transition:         $property;
+	-moz-transition: $property;
+	-o-transition: $property;
+	-webkit-transition: $property;
+	-ms-transition: $property;
+	transition: $property;
 }
 /* ===== Usage ===== */
 // .container {
@@ -75,22 +71,21 @@
 // }
 
 @mixin transform($property...) {
-    -moz-transform: $property;
-    -o-transform: $property;
-    -webkit-transform: $property;
-    -ms-transform: $property;
-    transform: $property;
+	-moz-transform: $property;
+	-o-transform: $property;
+	-webkit-transform: $property;
+	-ms-transform: $property;
+	transform: $property;
 }
 /* ===== Usage ===== */
 // .container {
 //     @include transform(rotate(30deg))
 // }
 
-
 @mixin cover-background {
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center;
 }
 /* ===== Usage ===== */
 // div {
@@ -99,29 +94,28 @@
 // }
 
 @mixin standard-border($radius: 4px, $width: 1px, $color) {
-    border-width: $width;
-    border-color: $color;
-    border-radius: $radius;
-    border-style: solid;
+	border-width: $width;
+	border-color: $color;
+	border-radius: $radius;
+	border-style: solid;
 }
 /* ===== Usage ===== */
 // .container {
 //     @include standard-border(5px, 1px, #ddd)
 // }
 
-
 @mixin text-short($numLines: 1) {
-    white-space: nowrap;
-    text-overflow: ellipsis;
-    overflow: hidden;
-    @supports (-webkit-line-clamp: $numLines) {
-        overflow: hidden;
-        text-overflow: ellipsis;
-        white-space: initial;
-        display: -webkit-box;
-        -webkit-line-clamp: $numLines;
-        -webkit-box-orient: vertical;
-    }
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	overflow: hidden;
+	@supports (-webkit-line-clamp: $numLines) {
+		overflow: hidden;
+		text-overflow: ellipsis;
+		white-space: initial;
+		display: -webkit-box;
+		-webkit-line-clamp: $numLines;
+		-webkit-box-orient: vertical;
+	}
 }
 /* ===== Usage ===== */
 // p {
@@ -129,28 +123,26 @@
 //     @include text-short(); *single line.
 // }
 
-
-
 $tablet: 768px;
 $large: 1024px;
 $desktop: 1280px;
 
 @mixin tablet {
-    @media only screen and (min-width: $tablet) {
-        @content;
-    }
+	@media only screen and (min-width: $tablet) {
+		@content;
+	}
 }
 
 @mixin large {
-    @media only screen and (min-width: $large) {
-        @content;
-    }
+	@media only screen and (min-width: $large) {
+		@content;
+	}
 }
 
 @mixin desktop {
-    @media only screen and (min-width: $desktop) {
-        @content;
-    }
+	@media only screen and (min-width: $desktop) {
+		@content;
+	}
 }
 /* ===== Usage ===== */
 // h1 {
@@ -160,27 +152,30 @@ $desktop: 1280px;
 // }
 
 @for $width from 1 through 4 {
-    .col-#{$width} {
-        width: (100%/ $width)
-    }
+	.col-#{$width} {
+		width: (100% / $width);
+	}
 }
 // .col-1 {width: 100%;}
 // .col-2 {width: 50%;}
 // .col-3 {width: 33.333%;}
 // .col-4 {width: 25%;}
 
-
-
 .txt-hide {
-    overflow: hidden; border: 0;
-    position: absolute; z-index: -1;
-    width: 1px; height: 1px;
-    clip: rect(1px, 1px, 1px, 1px); clip-path: inset(50%);
+	overflow: hidden;
+	border: 0;
+	position: absolute;
+	z-index: -1;
+	width: 1px;
+	height: 1px;
+	clip: rect(1px, 1px, 1px, 1px);
+	clip-path: inset(50%);
 }
 
 .row {
-    width: 100%; clear: both;
-    &:after {
-        @include clear();
-    }
+	width: 100%;
+	clear: both;
+	&:after {
+		@include clear();
+	}
 }

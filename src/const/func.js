@@ -1,4 +1,3 @@
-
-export const getTodayDate = ( updateDate ) => {
-    const today = new Date();
-}
+export const getTodayDate = (updateDate) => {
+	const today = new Date();
+};

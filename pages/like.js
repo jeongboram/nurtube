@@ -4,22 +4,21 @@ import axios from 'axios';
 
 const LikeVideo = () => {
 
-    const [likeVideos, setLikeVideos] = useState([])
+    //const [likeVideos, setLikeVideos] = useState([])
+    const [savedIdList, setSavedIdList] = useState([])
 
     const getLikeVideos = () => {
         const savedId = JSON.parse(localStorage.getItem('LikeVideosID'))
-        setLikeVideos(savedId)
-        for (let i=0;i<savedId.length;i++) {
-
-            //console.log('savedId[i]', typeof savedId[i])
-            // await axios.get(`${baseUrl}/videos?part=snippet&id=${savedId[i]}&key=${API_KEY}`)
-            // .then((res) => {
-            //     setLikeVideos(res.data.items)
-            // }).catch( e => {
-            //     console.log('Error:', e)
-            // })
-        }
-
+        setSavedIdList(savedId)
+        // for (let i=0;i<savedId.length;i++) {
+        //     axios.get(`${baseUrl}/videos?part=snippet&id=${savedId[i]}&key=${API_KEY}`)
+        //     .then((res) => {
+        //         datas.push(res.data.items)
+                
+        //     }).catch( e => {
+        //         console.log('Error:', e)
+        //     })
+        // }
     
     } 
 
@@ -32,7 +31,7 @@ const LikeVideo = () => {
         <>
             <section className='video-list'>
                 {
-                    likeVideos.map((video, index) => (
+                    savedIdList.map((video, index) => (
                         <>
                             <div key={index}>{video}</div>
                         </>
