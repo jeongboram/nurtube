@@ -15,7 +15,7 @@ function Thumb({ props }) {
 		}
 	};
 
-	console.log(publishedDate);
+	//console.log(publishedDate);
 
 	return (
 		<>
