@@ -3,6 +3,7 @@ import { API_KEY, baseUrl } from "const/index"
 import axios from 'axios';
 import { useStores } from 'store/Context';
 import Thumb from 'components/videos/Thumb';
+import { toJS } from 'mobx';
 
 
 const LikeVideo = () => {
@@ -25,7 +26,7 @@ const LikeVideo = () => {
                 console.log('Error:', e)
             })
         }
-        setSavedVideo(datas)
+        setSavedVideo(toJS(datas))
     } 
 
     useEffect(() => {
