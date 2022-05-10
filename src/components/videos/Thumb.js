@@ -1,18 +1,28 @@
 import React, { useEffect } from 'react';
 import Link from 'next/link';
+import { useStores } from 'store/Context';
+import { observer } from 'mobx-react'
 
-function Thumb({ props }) {
+const Thumb = observer(({ props }) => {
 	const { id } = props;
-	const publishedDate = props.snippet.publishedAt;
+	//const publishedDate = props.snippet.publishedAt;
+
+	const { videoStore } = useStores()
+	
+	
+
+	// const onLike = () => {
+	// 	//LocalStorage 에 저장된 아이디 가져오기
+	// 	const savedId = JSON.parse(localStorage.getItem('LikeVideosID'));
+	// 	if (!savedId) {
+	// 		localStorage.setItem('LikeVideosID', JSON.stringify([id]));
+	// 	} else {
+	// 		localStorage.setItem('LikeVideosID', JSON.stringify([...savedId, id]));
+	// 	}
+	// };
 
 	const onLike = () => {
-		//LocalStorage 에 저장된 아이디 가져오기
-		const savedId = JSON.parse(localStorage.getItem('LikeVideosID'));
-		if (!savedId) {
-			localStorage.setItem('LikeVideosID', JSON.stringify([id]));
-		} else {
-			localStorage.setItem('LikeVideosID', JSON.stringify([...savedId, id]));
-		}
+		videoStore.likeVideo(id)
 	};
 
 	//console.log(publishedDate);
@@ -40,6 +50,6 @@ function Thumb({ props }) {
 			</article>
 		</>
 	);
-}
+})
 
 export default Thumb;

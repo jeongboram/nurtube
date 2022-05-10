@@ -1,5 +1,5 @@
-import ThumbList from 'components/videos/ThumbList'
 
+import ThumbList from 'components/videos/ThumbList'
 
 const Home = () => {
   return (

@@ -35,6 +35,7 @@ const ThumbList = () => {
 		}
 	};
 
+
 	useEffect(() => {
 		let observer;
 		if (target) {
