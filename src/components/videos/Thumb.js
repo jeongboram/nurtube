@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { useStores } from 'store/Context';
 import { observer } from 'mobx-react'
@@ -7,9 +7,8 @@ const Thumb = observer(({ props }) => {
 	const { id } = props;
 	//const publishedDate = props.snippet.publishedAt;
 
+	const [like, setLike] = useState(false)
 	const { videoStore } = useStores()
-	
-	
 
 	// const onLike = () => {
 	// 	//LocalStorage 에 저장된 아이디 가져오기
@@ -22,8 +21,17 @@ const Thumb = observer(({ props }) => {
 	// };
 
 	const onLike = () => {
-		videoStore.likeVideo(id)
+		videoStore.likeVideo(id, props)
+		setLike((prev) => !prev)
 	};
+
+	const onDisLike = () => {
+		videoStore.dislikeVideo(id)
+	}
+
+	const onSave = () => {
+		videoStore.saveVideo(id)
+	}
 
 	//console.log(publishedDate);
 
@@ -44,7 +52,9 @@ const Thumb = observer(({ props }) => {
 						<strong>{props.snippet.channelTitle}</strong>
 						<span>조회수 : 4만회</span>
 						<span>{props.snippet.publishedAt}</span>
-						<button onClick={onLike}>좋아요</button>
+						<button onClick={onLike} className={like ? "like" : ""}>좋아요</button>
+						<button onClick={onDisLike}>좋아요취소</button>
+						<button onClick={onSave}>나중에보기</button>
 					</div>
 				</div>
 			</article>

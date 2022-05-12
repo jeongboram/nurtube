@@ -1,63 +1,46 @@
 import React, { useEffect, useState } from 'react'
-import { API_KEY, baseUrl } from "const/index"
-import axios from 'axios';
 import { useStores } from 'store/Context';
+import { toJS } from "mobx"; 
+import { observer } from 'mobx-react'
 import Thumb from 'components/videos/Thumb';
-import { toJS } from 'mobx';
 
 
-const LikeVideo = () => {
+const LikeVideo = observer(() => {
 
-    const [savedIdList, setSavedIdList] = useState([])
-    const [savedVideo, setSavedVideo] = useState()
+    const [savedVideo, setSavedVideo] = useState([])
 
     const { videoStore } = useStores()
 
-    const getLikeVideos = async () => {
-        let datas = []
-        for (let i=0;i<savedIdList.length;i++) {
-            await axios.get(`${baseUrl}/videos?part=snippet&id=${savedIdList[i]}&key=${API_KEY}`)
-            .then((res) => {
-                datas = [
-                    ...datas,
-                    res.data.items
-                ]
-            }).catch( e => {
-                console.log('Error:', e)
-            })
-        }
-        setSavedVideo(toJS(datas))
+    const getLikeVideos = () => {
+        const likedata = toJS(videoStore.likeVideoList)
+        setSavedVideo(likedata)
     } 
 
     useEffect(() => {
-        setSavedIdList(videoStore.likevideosIdx)
         getLikeVideos()
-    }, [savedIdList])
-
+    }, [savedVideo])
 
     return (
         <>
             <section className='video-list'>
                 {
-                    savedIdList.length === 0 && <div>좋아요한 동영상이 없어요</div>
+                    savedVideo.length === 0 && <div>좋아요한 동영상이 없어요</div>
                 }
                 {
-                    savedIdList.length > 0 && <>
+                    savedVideo.length > 0 && <>
                         {
                             savedVideo.map((video, index) => (
                                 <>
-                                    <Thumb key={index} props={video[0]} />
+                                    <Thumb key={index} props={video} />
                                 </>
                             ))
-
-                            
                         }
                     </>
                 }
             </section>
         </>
     )
-};
+});
 
 export default LikeVideo
 

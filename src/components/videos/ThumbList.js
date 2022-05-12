@@ -1,9 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import axios from 'axios';
-import { API_KEY, baseUrl } from 'const/index';
 import Thumb from 'components/videos/Thumb';
-import { useRef, forwardRef } from 'react';
 import Loader from 'components/Loader';
+import { getVideosApi } from '../../../pages/api/videoApi'
 
 const ThumbList = () => {
 	const [target, setTarget] = useState(null);
@@ -14,14 +12,8 @@ const ThumbList = () => {
 
 	const getVideos = async () => {
 		setIsLoaded(true);
-		await axios
-			.get(`${baseUrl}/videos?part=snippet&chart=mostPopular&maxResults=${resultNum}&key=${API_KEY}`)
-			.then((res) => {
-				setVideos(res.data.items)
-			})
-			.catch((e) => {
-				console.log('Error:', e);
-			});
+		const datas = await getVideosApi(resultNum)
+		setVideos(datas.data.items)
 		setIsLoaded(false);
 	};
 

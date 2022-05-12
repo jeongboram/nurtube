@@ -13,9 +13,7 @@ function Nav() {
 							</Link>
 						</li>
 						<li>
-							<Link href={'/popular'}>
-								<a>인기</a>
-							</Link>
+							<a>시청 기록</a>
 						</li>
 						<li>
 							<Link href={'/like'}>
@@ -23,11 +21,11 @@ function Nav() {
 							</Link>
 						</li>
 						<li>
-							<a>나중에 볼 동영상</a>
+							<Link href={'/save'}>
+								<a>나중에 볼 동영상</a>
+							</Link>
 						</li>
-						<li>
-							<a>시청 기록</a>
-						</li>
+						
 					</ul>
 				</nav>
 				<div>
