@@ -17,7 +17,7 @@ export const getVideosApi = (resultNum) => {
 }
 
 
-//특정 비디오 리스트 가져오기
+//특정 비디오 데이터 가져오기
 export const getSelectedVideosApi = (id) => {
     return instance({
         url: `/videos?part=snippet&id=${id}&key=${API_KEY}`,

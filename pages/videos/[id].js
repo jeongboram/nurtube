@@ -1,9 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useRouter } from "next/router"
-import axios from 'axios';
-import { API_KEY, baseUrl } from 'const/index';
+import { getSelectedVideosApi } from '../api/videoApi';
 import View from 'components/videos/View'
-
 
 export default function VideoDetail() {
 
@@ -13,14 +11,9 @@ export default function VideoDetail() {
     const [savedVideo, setSavedVideo] = useState([])
 
     const getVideoDetail = async () => {
-        await axios.get(`${baseUrl}/videos?part=snippet&id=${id}&key=${API_KEY}`)
-            .then((res) => {
-                console.log('res.data.items', res.data.items)
-                setSavedVideo(res.data.items)
-            }).catch( e => {
-                console.log('Error:', e)
-            })
-    } 
+        const datas = await getSelectedVideosApi(id)
+        setSavedVideo(datas.data.items)
+    }
 
     useEffect(() => {
         getVideoDetail()
