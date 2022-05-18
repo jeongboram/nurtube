@@ -3,13 +3,16 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "env-cmd -f .env.dev  next dev",
+    "dev:local": "env-cmd -f .env.local  next dev",
+    "dev:prod": "env-cmd -f .env.prod  next dev",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"
   },
   "dependencies": {
     "axios": "^0.26.1",
+    "env-cmd": "^10.1.0",
     "mobx": "^6.5.0",
     "mobx-react": "^7.4.0",
     "next": "12.1.5",
@@ -22,6 +25,10 @@
   "devDependencies": {
     "eslint": "8.13.0",
     "eslint-config-next": "12.1.5",
+    "msw": "^0.40.0",
     "prettier": "^2.6.2"
+  },
+  "msw": {
+    "workerDirectory": "public"
   }
 }

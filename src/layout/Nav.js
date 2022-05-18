@@ -13,7 +13,9 @@ function Nav() {
 							</Link>
 						</li>
 						<li>
-							<a>시청 기록</a>
+							<Link href={'/watched'}>
+								<a>시청 기록</a>
+							</Link>
 						</li>
 						<li>
 							<Link href={'/like'}>
