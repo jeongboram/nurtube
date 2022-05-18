@@ -265,3 +265,39 @@ footer {
 		}
 	}
 }
+
+
+.video-comment {
+	margin: 50px 0 0 0;
+	.comments-wrapper {
+		margin: 20px 0 0 0;
+		ul {
+			li {
+				@include flex-default();
+				gap: 10px;
+				margin: 15px 0 0 0;
+				&:first-child {margin: 0;}
+			}
+		}
+		.profile-thumb {
+			width: 50px; height: 50px;
+			background-color: antiquewhite;
+			border-radius: 50%;
+		}
+		.des {
+			width: calc(100% - 60px);
+			.author {
+				margin: 0 0 10px 0;
+				font-weight: 600;
+				font-size: 13px;
+			}
+			.comment-text {
+				font-size: 12px; 
+				line-height: 150%;
+			}
+			.like-count {
+				margin: 5px 0 0 0;
+			}
+		}
+	}
+}

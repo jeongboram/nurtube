@@ -21,28 +21,25 @@ const Thumb = observer(({ props }) => {
 	// };
 
 	const onLike = () => {
-		videoStore.likeVideo(id, props)
-		setLike((prev) => !prev)
+		videoStore.likeVideo(props)
+		setLike(prev => !prev)
+		
 	};
-
-	const onDisLike = () => {
-		videoStore.dislikeVideo(id)
-	}
 
 	const onSave = () => {
 		videoStore.saveVideo(id)
 	}
-
-	//console.log(publishedDate);
 
 	return (
 		<>
 			<article className="video-thumb-wrapper">
 				<div className="video-thumb">
 					<Link href={`videos/${id}`}>
-						<div className="thumb-inner">
-							<div className="thumb" style={{ backgroundImage: `url(${props.snippet.thumbnails.default.url})` }}></div>
-						</div>
+						<a>
+							<div className="thumb-inner">
+								<div className="thumb" style={{ backgroundImage: `url(${props.snippet.thumbnails.default.url})` }}></div>
+							</div>
+						</a>
 					</Link>
 				</div>
 				<div className="video-des">
@@ -50,10 +47,8 @@ const Thumb = observer(({ props }) => {
 					<div className="des">
 						<p>{props.snippet.title}</p>
 						<strong>{props.snippet.channelTitle}</strong>
-						<span>조회수 : 4만회</span>
 						<span>{props.snippet.publishedAt}</span>
 						<button onClick={onLike} className={like ? "like" : ""}>좋아요</button>
-						<button onClick={onDisLike}>좋아요취소</button>
 						<button onClick={onSave}>나중에보기</button>
 					</div>
 				</div>

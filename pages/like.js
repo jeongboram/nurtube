@@ -29,10 +29,8 @@ const LikeVideo = observer(() => {
                 {
                     savedVideo.length > 0 && <>
                         {
-                            savedVideo.map((video, index) => (
-                                <>
-                                    <Thumb key={index} props={video} />
-                                </>
+                            savedVideo.map((video) => (
+                                <Thumb key={video.id} props={video} />
                             ))
                         }
                     </>

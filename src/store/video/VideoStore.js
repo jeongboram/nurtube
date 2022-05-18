@@ -1,15 +1,14 @@
 import { action, makeObservable, observable } from "mobx"; 
+import { getVideosApi } from "../../../pages/api/videoApi";
 
 
 export class VideoStore {
     rootStore;
 
-    likevideosIdx = []
     savevideosIdx = []
 
     //video stores
     videosList = []
-
 
     //like videos data
     likeVideoList = []
@@ -24,31 +23,47 @@ export class VideoStore {
 
     constructor(root) {
         makeObservable(this, {
-            //likevideosIdx:observable,  
             savevideosIdx:observable, 
             likeVideoList:observable,
             saveVideoList:observable,
+            videosList:observable,
+            getVideoList:action,
             likeVideo:action,
             saveVideo:action,
+            cancelLikeVideo:action,
         })
         this.rootStore = root
-
     }
 
     getVideoList(data) {
         this.videosList.push(data)
-        console.log('getVideoList', this.videosList)
+        this.videosList = [
+            ...this.videosList,
+            data
+        ]
     }
 
-    likeVideo(id, props) {
+    likeVideo(props) {
         this.likeVideoList.push(props)
     }
-
-    dislikeVideo(id) {
-        const dislikeIdx = this.likevideosIdx.filter(x => x.id !== id)  //indexOf 
-        this.likevideosIdx = dislikeIdx
-        //console.log('dislikevideo', this.likevideosIdx)
+    cancelLikeVideo(id, props) {
+        this.likeVideoList = this.likeVideoList.map((video) => {
+            if ( video.id === id) {
+                return {
+                    ...video,
+                    props
+                }
+            }
+            return video
+        })
     }
+    // cancelLikeVideo(id) {
+    //     const results = this.likeVideoList.filter((id, index, target) => {
+    //         return target.indexOf(id) === index
+    //     })
+    //     console.log('cancel like videos', results)
+    // }
+
 
     saveVideo(id) {
         this.savevideosIdx.push(id)

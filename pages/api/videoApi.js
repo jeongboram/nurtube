@@ -25,6 +25,12 @@ export const getSelectedVideosApi = (id) => {
     })
 }
 
+//코멘트 가져오기
+export const getCommentsApi = (id, num) => {
+    return instance({
+        url: `/commentThreads?part=snippet&videoId=${id}&maxResults=${num}&key=${API_KEY}`
+    })
+}
 
 
 
