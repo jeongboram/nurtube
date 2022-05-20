@@ -1,21 +1,24 @@
 import { StoreProvider } from 'store/Context.jsx'
 import { RootStore } from 'store/RootStore'
-import 'assets/scss/globals.css'
-import 'assets/scss/ui.scss'
 import Header from 'layout/Header'
 import Footer from 'layout/Footer'
 import Nav from 'layout/Nav'
-
-// MSW : MOCK API 사용할 경우
-// 노드 환경에선 server, 브라우저 환경에선 worker를 사용한다.
-(async () => {
-  const { worker } = await import('mocks/worker');
-  worker.start();
-})();
+import 'assets/scss/globals.css'
+import 'assets/scss/ui.scss'
 
 const rootStore = new RootStore()
 
+
 function MyApp({ Component, pageProps }) {
+
+  //Mocking API Start 
+  if (process.env.NODE_ENV === "development") {
+    (async () => {
+      const { worker } = await import('mocks/browser');
+      worker.start();
+    })();
+  }
+
   return (
     <>
       <StoreProvider value={rootStore}>
