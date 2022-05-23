@@ -28,10 +28,18 @@ export const getSelectedVideosApi = (id) => {
 //코멘트 가져오기
 export const getCommentsApi = (id, num) => {
     return instance({
-        url: `/commentThreads?part=snippet&videoId=${id}&maxResults=${num}&key=${API_KEY}`
+        url: `/commentThreads?part=snippet&videoId=${id}&maxResults=${num}&key=${API_KEY}`,
+        method: 'get',
     })
 }
 
+//검색
+export const getSearchResults = (q, num) => {
+    return instance({
+        url: `/search?q=${q}&part=snippet&maxResults=${num}&key=${API_KEY}`,
+        method: 'get',
+    })
+}
 
 
 
