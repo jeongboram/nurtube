@@ -2,13 +2,15 @@ import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { useStores } from 'store/Context';
 import { observer } from 'mobx-react'
+import { calDate } from 'const/func';
 
 const Thumb = observer(({ props }) => {
 	const { id } = props;
-	//const publishedDate = props.snippet.publishedAt;
+	
 
 	const [like, setLike] = useState(false)
 	const { videoStore } = useStores()
+	const [dates, setDates] = useState('')
 
 	// const onLike = () => {
 	// 	//LocalStorage 에 저장된 아이디 가져오기
@@ -20,6 +22,12 @@ const Thumb = observer(({ props }) => {
 	// 	}
 	// };
 
+
+	const getCalDatas = () => {
+		const publishedDate = props.snippet.publishedAt;
+		setDates(calDate(publishedDate))
+	}
+
 	const onLike = () => {
 		videoStore.likeVideo(props)
 		setLike(prev => !prev)
@@ -29,6 +37,10 @@ const Thumb = observer(({ props }) => {
 	const onSave = () => {
 		videoStore.saveVideo(id)
 	}
+
+	useEffect(() => {
+		getCalDatas()
+	}, [dates])
 
 	return (
 		<>
@@ -47,6 +59,7 @@ const Thumb = observer(({ props }) => {
 					<div className="des">
 						<p>{props.snippet.title}</p>
 						<strong>{props.snippet.channelTitle}</strong>
+						<span>{dates}</span>
 						<span>{props.snippet.publishedAt}</span>
 						<button onClick={onLike} className={like ? "like" : ""}>좋아요</button>
 						<button onClick={onSave}>나중에보기</button>
