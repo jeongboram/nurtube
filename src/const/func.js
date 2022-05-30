@@ -24,12 +24,13 @@ export const calDate = (publishedDate) => {
 	//업데이트 날짜가 당일 일 경우.
 	if ( date_today == date_published) {
 		
-		if (todays.time_hour == published.time_hour) {
-			//'시'가 갚으면 방금전.
+		const caldata = Number(todays.time_hour) - Number(published.time_hour)
+
+		if (todays.time_hour == published.time_hour || calDate == 1 ) { //.... 03:00 / 02:55 일경우 케이스 작성
+			//'시'가 같으면 방금전.
 			return `방금전`
 		} else {
 			//n시간 전으로 표기.
-			const caldata = Number(todays.time_hour) - Number(published.time_hour)
 			return `${caldata}시간전`
 		}
 	}
@@ -46,10 +47,15 @@ export const calDate = (publishedDate) => {
 		//달이 같으면..
 		if ( todays.month == published.month ) {
 			const dayss = Number(todays.date) - Number(published.date)
-			console.log(dayss)
+
+			if ( dayss == 7 ) {
+				return '일주일전'
+			}
 			return `${dayss}일전`
 		}
 	}
+
+
 
 
 };
