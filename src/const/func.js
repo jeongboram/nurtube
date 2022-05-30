@@ -26,7 +26,7 @@ export const calDate = (publishedDate) => {
 		
 		const caldata = Number(todays.time_hour) - Number(published.time_hour)
 
-		if (todays.time_hour == published.time_hour || calDate == 1 ) { //.... 03:00 / 02:55 일경우 케이스 작성
+		if (todays.time_hour == published.time_hour || caldata == 1 ) { //.... 03:00 / 02:55 일경우 케이스 작성
 			//'시'가 같으면 방금전.
 			return `방금전`
 		} else {
@@ -43,19 +43,14 @@ export const calDate = (publishedDate) => {
 	}
 
 	if ( todays.year == published.year ) { //같은 년도.
-		const datess = Number(todays.month) - Number(published.month)
 		//달이 같으면..
 		if ( todays.month == published.month ) {
 			const dayss = Number(todays.date) - Number(published.date)
-
 			if ( dayss == 7 ) {
 				return '일주일전'
 			}
 			return `${dayss}일전`
 		}
 	}
-
-
-
 
 };
