@@ -41,8 +41,20 @@ export const getSearchResults = (q, num) => {
     })
 }
 
+//채널 카테고리 ID
+export const getChannelId = (id) => {
+    return instance({
+        url: `/videoCategories?part=snippet&id=${id}&key=${API_KEY}`,
+        method: 'get',
+    })
+}
 
-
-
+//채널 카테고리 리스트
+export const getChannelVideos = (channelId, num) => {
+    return instance({
+        url: `/search?part=snippet&playlistId=${channelId}&maxResults=${num}&key=${API_KEY}`,
+        method: 'get',
+    })
+}
 
 

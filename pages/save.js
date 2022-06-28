@@ -1,11 +1,11 @@
-import React from 'react'
-import { useStores } from 'store/Context';
+import React, { useEffect } from 'react'
+
 
 const Save = () => {
 
-    const { videoStore } = useStores()
-
-    console.log(videoStore)
+    useEffect(() => {
+        console.log('page init')
+    }, [])
 
     return (
         <div>save</div>

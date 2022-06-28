@@ -5,9 +5,9 @@ import { observer } from 'mobx-react'
 import { calDate } from 'const/func';
 
 const Thumb = observer(({ props }) => {
+
 	const { id } = props;
 	
-
 	const [like, setLike] = useState(false)
 	const { videoStore } = useStores()
 	const [dates, setDates] = useState('')

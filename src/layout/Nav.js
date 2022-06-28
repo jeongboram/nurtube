@@ -1,29 +1,40 @@
 import Link from 'next/link';
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import { categories } from '../mocks/handlers/categories'
 
 function Nav() {
+
+	
+	const [channels, setChannels] = useState([])
+
+	useEffect(() => {
+		setChannels(categories)
+	}, [channels])
+	
+
+	
 	return (
 		<>
 			<section className="nav-wrapper">
 				<nav>
 					<ul>
 						<li>
-							<Link href={'/'}>
+							<Link href="/">
 								<a>홈</a>
 							</Link>
 						</li>
 						<li>
-							<Link href={'/watched'}>
+							<Link href="/watched">
 								<a>시청 기록</a>
 							</Link>
 						</li>
 						<li>
-							<Link href={'/like'}>
+							<Link href="/like">
 								<a>좋아요 표시한 영상</a>
 							</Link>
 						</li>
 						<li>
-							<Link href={'/save'}>
+							<Link href="/save">
 								<a>나중에 볼 동영상</a>
 							</Link>
 						</li>
@@ -32,21 +43,19 @@ function Nav() {
 				</nav>
 				<div>
 					<ul>
-						<li>
-							<a>전체</a>
-						</li>
-						<li>
-							<a>요리 프로그램</a>
-						</li>
-						<li>
-							<a>부동산</a>
-						</li>
-						<li>
-							<a>자연</a>
-						</li>
-						<li>
-							<a>음악</a>
-						</li>
+						{
+							channels.map((channel) => (
+								<li key={channel.id}>
+									<Link as={`/categories/${channel.title}`} 
+										href={{
+											pathname: `/categories/[id]`, 
+											query: { data: JSON.stringify(channel)}
+										}}>
+										<a>{channel.title}</a>
+									</Link>
+								</li>
+							))
+						}
 					</ul>
 				</div>
 			</section>

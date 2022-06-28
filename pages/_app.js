@@ -6,13 +6,13 @@ import Footer from 'layout/Footer'
 import Nav from 'layout/Nav'
 import 'assets/scss/globals.css'
 import 'assets/scss/ui.scss'
+import { useRouter } from 'next/router';
 
 const rootStore = new RootStore()
 
 
 function MyApp({ Component, pageProps }) {
 
-  const [searhResults, setSearchResults] = useState([])
 
   //Mocking API Start 
   if (process.env.NODE_ENV === "development") {
@@ -22,25 +22,16 @@ function MyApp({ Component, pageProps }) {
     })();
   }
 
-  const searchData = (data) => {
-    setSearchResults(data)
-  }
-
-  useEffect(() => {
-  
-  }, [searhResults])
-  
-
 
   return (
     <>
       <StoreProvider value={rootStore}>
         <div className='wrapper'>
-          <Header searchData={searchData} />
+          <Header />
           <section className='contents-wrapper'>
             <Nav />
             <div className='inner'>
-              <Component {...pageProps} searhResults={searhResults} />
+              <Component {...pageProps} />
               <Footer />
             </div>
           </section>

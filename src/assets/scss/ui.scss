@@ -23,6 +23,16 @@ header {
 			font-size: 0;
 		}
 	}
+	.nav-bar {
+		@include flex-default();
+		gap: 15px;
+		.btn-navbar {
+			font-size: 24px;
+			color: #fff;
+			background: transparent;
+		}
+	}
+	
 	.searchbox {
 		width: 50%;
 		max-width: 500px;
@@ -30,15 +40,18 @@ header {
 			@include flex-center-vert();
 			input[type='search'] {
 				width: calc(100% - 50px);
-				height: 30px;
+				height: 40px;
 				padding: 0 10px;
 				background-color: #000;
-				color: #fff;
+				color: rgba(255,255,255,.7);
+				border:1px solid rgba(255,255,255,.2);
+				border-right: none;
 			}
 			button {
 				width: 50px;
-				height: 30px;
-				background-color: aquamarine;
+				height: 40px;
+				background-color: rgba(255,255,255,.1);
+				font-size: 16px;
 			}
 		}
 	}
@@ -46,6 +59,8 @@ header {
 		width: 40px;
 		height: 40px;
 		border-radius: 50%;
+		font-size: 14px;
+		color:#333;
 	}
 }
 
