@@ -17,14 +17,9 @@ const LikeVideo = observer(() => {
     } 
     
     useEffect(() => {
-        console.log('page init')
+        getLikeVideos()
     }, [])
 
-    useEffect(() => {
-        getLikeVideos()
-    }, [savedVideo])
-
-    
 
     return (
         <>

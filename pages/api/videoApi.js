@@ -57,4 +57,10 @@ export const getChannelVideos = (channelId, num) => {
     })
 }
 
-
+//채널 리스트
+export const getChannelList = (num) => {
+    return instance({
+        url: `/videoCategories?part=snippet&&maxResults=${num}&regionCode=KR&key=${API_KEY}`,
+        method: 'get',
+    })
+}

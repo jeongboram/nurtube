@@ -1,6 +1,9 @@
 @import './abstracts/_variables.scss';
 @import './abstracts/_mixin.scss';
 
+body {
+	@include scrolling();	
+}
 .wrapper,
 #__next {
 	height: 100%;
@@ -12,6 +15,7 @@ header {
 	position: relative;
 	background-color: #212121;
 	padding: 10px 20px;
+	position: fixed; top: 0; z-index: 50;
 	@include flex-center-between();
 	h1 {
 		a {
@@ -74,15 +78,15 @@ footer {
 
 .contents-wrapper {
 	width: 100%;
-	height: calc(100% - 80px);
 	position: relative;
 	@include flex-center-horiz();
 	.nav-wrapper {
+		position: fixed; left: 0; z-index: 40;
 		width: 200px;
 		height: 100%;
 		padding: 0 15px;
 		background-color: #212121;
-		@include flex-center-column();
+		@include flex-center-column(); gap: 30px;
 		nav,
 		> div {
 			width: 100%;
@@ -96,13 +100,30 @@ footer {
 				}
 			}
 		}
-		nav {
-			border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+		.nav-categories {
+			width: 100%; max-height: 40%; overflow: hidden; overflow-y: scroll;
+			position: relative;
+			@include scrolling();	
+			ul {
+				display: block; 
+				@include flex-center-column(); gap: 10px;
+				li {
+					display: inline-block;
+					a {
+						display: block;
+						color: rgba(255, 255, 255, 0.7);font-size: 14px;
+						&:hover {
+							color: rgba(255, 255, 255, 1);
+						}
+					}
+				}
+			}
 		}
 	}
 	.inner {
-		width: calc(100% - 200px);
-		padding: 30px;
+		width: 100%;
+		padding: 140px 30px 30px 230px;
+		
 	}
 }
 
@@ -255,31 +276,35 @@ footer {
 	margin: 20px;
 }
 
-.nav-categories {
-	width: 100%; overflow: hidden; overflow-x: auto;
-	position: relative;
-	margin: 0 0 50px 0;
-	ul {
-		display: block;
-		gap: 10px;
-		white-space: nowrap;
-		li {
-			display: inline-block;
-			margin-left: 10px;
-			&:first-child {
-				margin-left: 0;
-			}
-			a {
-				display: block; border-radius: 25px;
-				background-color: rgba(255,255,255,.1); color: rgba(255, 255, 255, 0.7);
-				padding: 5px 10px; font-size: 14px;
-				&:hover {
-					background-color: rgba(255,255,255,.3);
+.inner {
+	.nav-categories {
+		width: 100%; overflow: hidden; overflow-x: auto;
+		position: relative;
+		margin: 0 0 50px 0;
+		@include scrolling();	
+		ul {
+			display: block;
+			gap: 10px;
+			white-space: nowrap;
+			li {
+				display: inline-block;
+				margin-left: 10px;
+				&:first-child {
+					margin-left: 0;
+				}
+				a {
+					display: block; border-radius: 25px;
+					background-color: rgba(255,255,255,.1); color: rgba(255, 255, 255, 0.7);
+					padding: 5px 10px; font-size: 14px;
+					&:hover {
+						background-color: rgba(255,255,255,.3);
+					}
 				}
 			}
 		}
 	}
 }
+
 
 
 .video-comment {

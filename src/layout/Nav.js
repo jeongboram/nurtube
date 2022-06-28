@@ -1,15 +1,17 @@
 import Link from 'next/link';
 import React, { useState, useEffect } from 'react';
-import { categories } from '../mocks/handlers/categories'
+// import { categories } from '../mocks/handlers/categories'
+
+import Categories from 'components/Categories';
 
 function Nav() {
 
 	
-	const [channels, setChannels] = useState([])
+	// const [channels, setChannels] = useState([])
 
-	useEffect(() => {
-		setChannels(categories)
-	}, [channels])
+	// useEffect(() => {
+	// 	setChannels(categories)
+	// }, [channels])
 	
 
 	
@@ -41,23 +43,8 @@ function Nav() {
 						
 					</ul>
 				</nav>
-				<div>
-					<ul>
-						{
-							channels.map((channel) => (
-								<li key={channel.id}>
-									<Link as={`/categories/${channel.title}`} 
-										href={{
-											pathname: `/categories/[id]`, 
-											query: { data: JSON.stringify(channel)}
-										}}>
-										<a>{channel.title}</a>
-									</Link>
-								</li>
-							))
-						}
-					</ul>
-				</div>
+				<Categories />
+				
 			</section>
 		</>
 	);
