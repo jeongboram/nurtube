@@ -38,6 +38,7 @@ const Thumb = observer(({ props }) => {
 		videoStore.saveVideo(id)
 	}
 
+	console.log('thumbpropsthumbpropsthumbpropsthumbprops', props)
 	useEffect(() => {
 		getCalDatas()
 	}, [dates])

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { getChannelVideos, getChannelList } from '../api/videoApi';
+import Thumb from 'components/videos/Thumb'
 
 export default function Category({ data }) {
 
@@ -21,11 +22,13 @@ export default function Category({ data }) {
         <>
             <section className='contents'>
                 <h2>{datas.snippet.title}</h2>
-                {
-                    videos.map((video) => (
-                        <p key={video.id.videoId}>{video.id.videoId}</p>
-                    ))
-                }
+                <div className='video-list'>
+                    {
+                        videos.map((video) => (
+                            <Thumb key={video.id.videoId} props={video} />
+                        ))
+                    }
+                </div>
             </section>
         </>
     )
