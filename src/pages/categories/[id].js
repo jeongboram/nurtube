@@ -1,45 +1,31 @@
 import React, { useEffect, useState } from 'react';
-import { getChannelVideos, getChannelList } from 'pages/api/videoApi';
 import Thumb from 'components/videos/Thumb'
+import ThumbList from 'components/videos/ThumbList';
+import { getChannelVideos } from 'pages/api/videoApi'
 
-export default function Category({ data }) {
-
-    const [videos, setVideos] = useState([])
-
-    const datas = JSON.parse(data)
-
-    const getVideoData = async () => {
-        const resData = await getChannelVideos(datas.id, 25)
-        console.log('resdata', resData)
-        setVideos(resData.data.items)
-    }
+export default function Category({ queries, res }) {
     
-    useEffect(() => {
-        getVideoData()
-    }, [data])
-
     return (
         <>
             <section className='contents'>
-                <h2>{datas.snippet.title}</h2>
-                <div className='video-list'>
-                    {
-                        videos.map((video) => (
-                            <Thumb key={video.id.videoId} props={video} />
-                        ))
-                    }
-                </div>
+                <h2>{queries.id}</h2>
+                <section className='contents'>
+                    <ThumbList props={res} />
+                </section>
             </section>
         </>
     )
 }
 
-export const getServerSideProps = (context) => {
-    const { data } = context.query
+export async function getServerSideProps(context) {
+    const queries = await context.query
+    const channelId = await queries.data
+    const ress = await getChannelVideos(channelId, 25)
 
     return {
         props: { 
-            data
+            queries,
+            res: ress.data.items
         }
     }
 }

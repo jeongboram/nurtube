@@ -38,7 +38,6 @@ export const calDate = (publishedDate) => {
 	//년도가 다를 경우.
 	if ( todays.year !== published.year ) {
 		const date = todays.year - published.year
-		console.log('datedatedatedate', date)
 		return `${date}년전`
 	}
 

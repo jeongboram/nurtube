@@ -28,7 +28,7 @@ function Categories() {
                                 <Link as={`/categories/${channel.snippet.title}`}
                                     href={{
                                         pathname: `/categories/[id]`, 
-                                        query: { data: JSON.stringify(channel)}
+                                        query: { data: channel.snippet.channelId}
                                     }}>
                                     <a>{channel.snippet.title}</a>
                                 </Link>

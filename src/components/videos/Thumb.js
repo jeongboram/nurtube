@@ -3,14 +3,19 @@ import Link from 'next/link';
 import { useStores } from 'store/Context';
 import { observer } from 'mobx-react'
 import { calDate } from 'const/func';
+import { useRouter } from 'next/router';
 
 const Thumb = observer(({ props }) => {
 
-	const { id } = props;
-	
+	//const { id } = props;
+	const id = props.id
+
 	const [like, setLike] = useState(false)
 	const { videoStore } = useStores()
 	const [dates, setDates] = useState('')
+
+	const router = useRouter()
+
 
 	// const onLike = () => {
 	// 	//LocalStorage 에 저장된 아이디 가져오기
@@ -22,6 +27,8 @@ const Thumb = observer(({ props }) => {
 	// 	}
 	// };
 
+	console.log(`this page is from ${router.pathname}`)
+	console.log('pp', props.id)
 
 	const getCalDatas = () => {
 		const publishedDate = props.snippet.publishedAt;
@@ -32,7 +39,6 @@ const Thumb = observer(({ props }) => {
 		setLike((prev) => {
 			!prev
 			videoStore.likeVideo(props, !prev)
-			console.log('store props', props)
 		})
 	};
 
@@ -53,7 +59,11 @@ const Thumb = observer(({ props }) => {
 		<>
 			<article className="video-thumb-wrapper">
 				<div className="video-thumb">
-					<Link href={`videos/${id}`}>
+					<Link as={`/videos/${id}`} 
+						href={{
+							pathname: `/videos/[id]`,
+							query: { data: id}
+						}}>
 						<a>
 							<div className="thumb-inner">
 								<div className="thumb" style={{ backgroundImage: `url(${props.snippet.thumbnails.default.url})` }}></div>
