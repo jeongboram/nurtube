@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { getCommentsApi } from '../../../pages/api/videoApi'
+import { getCommentsApi } from 'pages/api/videoApi'
 import Loader from 'components/Loader';
 
 

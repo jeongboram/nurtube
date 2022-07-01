@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { getSearchResults } from '../../pages/api/videoApi'
+import { getSearchResults } from '../pages/api/videoApi'
 import { useRouter } from 'next/router';
 import { FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import { faSearch, faBars } from '@fortawesome/free-solid-svg-icons'

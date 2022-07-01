@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import Thumb from 'components/videos/Thumb';
 import Loader from 'components/Loader';
-import { getVideosApi } from '../../../pages/api/videoApi'
+import { getVideosApi } from 'pages/api/videoApi'
 
 const ThumbList = () => {
 	const [target, setTarget] = useState(null);

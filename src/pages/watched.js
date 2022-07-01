@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { getSelectedVideosApi } from './api/videoApi'
+import { getSelectedVideosApi } from 'pages/api/videoApi'
 
 const Watched = () => {
 

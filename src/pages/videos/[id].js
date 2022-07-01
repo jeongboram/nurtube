@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useRouter } from "next/router"
-import { getSelectedVideosApi } from '../api/videoApi';
+import { getSelectedVideosApi } from 'pages/api/videoApi';
 import View from 'components/videos/View'
 
 export default function VideoDetail() {

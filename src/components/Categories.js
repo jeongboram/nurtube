@@ -1,9 +1,8 @@
 import Link from 'next/link'
 import React, { useEffect, useState } from 'react'
-import { getChannelList } from '../../pages/api/videoApi'
+import { getChannelList } from 'pages/api/videoApi'
 
 function Categories() {
-
 
     const [channels, setChannels] = useState([])
 

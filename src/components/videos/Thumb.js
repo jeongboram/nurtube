@@ -29,19 +29,25 @@ const Thumb = observer(({ props }) => {
 	}
 
 	const onLike = () => {
-		videoStore.likeVideo(props)
-		setLike(prev => !prev)
-		
+		setLike((prev) => {
+			!prev
+			videoStore.likeVideo(props, !prev)
+			console.log('store props', props)
+		})
 	};
 
 	const onSave = () => {
 		videoStore.saveVideo(id)
 	}
 
-	console.log('thumbpropsthumbpropsthumbpropsthumbprops', props)
 	useEffect(() => {
 		getCalDatas()
 	}, [dates])
+
+	useEffect(() => {
+		
+	}, [props, like])
+
 
 	return (
 		<>
@@ -62,7 +68,7 @@ const Thumb = observer(({ props }) => {
 						<strong>{props.snippet.channelTitle}</strong>
 						<span>{dates}</span>
 						<span>{props.snippet.publishedAt}</span>
-						<button onClick={onLike} className={like ? "like" : ""}>좋아요</button>
+						<button onClick={onLike} className={props.likeBtn ? "like" : ""}>좋아요</button>
 						<button onClick={onSave}>나중에보기</button>
 					</div>
 				</div>

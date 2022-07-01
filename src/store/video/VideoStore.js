@@ -1,5 +1,5 @@
 import { action, makeObservable, observable } from "mobx"; 
-import { getVideosApi } from "../../../pages/api/videoApi";
+import { getVideosApi } from "pages/api/videoApi";
 
 
 export class VideoStore {
@@ -43,8 +43,11 @@ export class VideoStore {
         ]
     }
 
-    likeVideo(props) {
-        this.likeVideoList.push(props)
+    likeVideo(props, checked) {
+        this.likeVideoList.push({
+            ...props,
+            likeBtn: checked
+        })
     }
     cancelLikeVideo(id, props) {
         this.likeVideoList = this.likeVideoList.map((video) => {

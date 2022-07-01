@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { getChannelVideos, getChannelList } from '../api/videoApi';
+import { getChannelVideos, getChannelList } from 'pages/api/videoApi';
 import Thumb from 'components/videos/Thumb'
 
 export default function Category({ data }) {
