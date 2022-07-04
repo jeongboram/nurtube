@@ -3,16 +3,15 @@ import { useRouter } from "next/router"
 import { getSelectedVideosApi } from 'pages/api/videoApi';
 import View from 'components/videos/View'
 
-export default function VideoDetail({ ress }) {
+export default function VideoDetail({ res }) {
 
     const router = useRouter();
-    const { id } = router.query
+    
 
-    // const [video, setVideo] = useState([])
 
-    // const getVideoDetail = async () => {
-    //     const datas = await getSelectedVideosApi(id)
-    //     console.log('video', datas)
+    // const getVideoDetail = async() => {
+    //     const datas = await getSelectedVideosApi(data)
+    //     setVideos(datas)
     // }
 
     // const recLocalstorage = () => {
@@ -26,10 +25,10 @@ export default function VideoDetail({ ress }) {
 
     // useEffect(() => {
     //     getVideoDetail()
+    //     console.log('videosvideosvideos', queries)
     // }, [])
 
-    console.log('vidoes Dynamic router', ress)
-
+    console.log('videosvideosvideos', res[0])
 
 
     return (
@@ -41,34 +40,51 @@ export default function VideoDetail({ ress }) {
                     //     <View key={index} video={res} />
                     // ))
                 }
-                <View props={ress} />
+                <View videos={res[0]} />
             </section>
         </>
     )
 }
 
-// export async function getServerSideProps(context) {
-//     const queries = await context.query
-//     const channelId = await queries.data
-//     const ress = await getSelectedVideosApi(channelId)
-
-//     return {
-//         props: { 
-//             queries,
-//             ress
-//         }
-//     }
-// }
-
-
 export async function getServerSideProps(context) {
     const queries = await context.query
-    const videoId = await queries.id
-    const ress = await getSelectedVideosApi(videoId)
+    const channelId = await queries.data
+    const ress = await getSelectedVideosApi(channelId)
 
     return {
-        props: {
+        props: { 
+            queries,
             res: ress.data.items
         }
     }
 }
+
+
+// export async function getStaticProps(context) {
+
+
+//     const queries = await context.query
+//     //const videoId = await queries.id
+//     //const ress = await getSelectedVideosApi(videoId)
+
+//     return {
+//         props: {
+//             queries,
+//             //res: ress.data.items
+//         }
+//     }
+// }
+
+// export async function getStaticPaths() {
+//     return {
+//         paths: [
+//             {
+//                 params: {
+//                     id: "Iiukq_ilT0Y",
+//                 }
+//             }
+//         ],
+//         fallback: true
+//     }
+// }
+

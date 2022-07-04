@@ -5,7 +5,7 @@ import { observer } from 'mobx-react'
 import { calDate } from 'const/func';
 import { useRouter } from 'next/router';
 
-const Thumb = observer(({ props }) => {
+const Thumb = observer(({ props, videoId }) => {
 
 	//const { id } = props;
 	const id = props.id
@@ -27,8 +27,10 @@ const Thumb = observer(({ props }) => {
 	// 	}
 	// };
 
-	console.log(`this page is from ${router.pathname}`)
-	console.log('pp', props.id)
+	// console.log(`this page is from ${router.pathname}`)
+	// console.log('pp', props.id)
+
+	console.log('thubms id ', videoId)
 
 	const getCalDatas = () => {
 		const publishedDate = props.snippet.publishedAt;
@@ -59,10 +61,10 @@ const Thumb = observer(({ props }) => {
 		<>
 			<article className="video-thumb-wrapper">
 				<div className="video-thumb">
-					<Link as={`/videos/${id}`} 
+					<Link as={`/videos/${videoId}`} 
 						href={{
 							pathname: `/videos/[id]`,
-							query: { data: id}
+							query: { data: videoId }
 						}}>
 						<a>
 							<div className="thumb-inner">

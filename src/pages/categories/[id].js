@@ -2,9 +2,14 @@ import React, { useEffect, useState } from 'react';
 import Thumb from 'components/videos/Thumb'
 import ThumbList from 'components/videos/ThumbList';
 import { getChannelVideos } from 'pages/api/videoApi'
+import { useRouter } from "next/router"
 
-export default function Category({ queries, res }) {
+export default function Category({ queries, res, channelId }) {
     
+    const router = useRouter();
+    const { id } = router.query
+
+
     return (
         <>
             <section className='contents'>
@@ -25,6 +30,7 @@ export async function getServerSideProps(context) {
     return {
         props: { 
             queries,
+            channelId,
             res: ress.data.items
         }
     }

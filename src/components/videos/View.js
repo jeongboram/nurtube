@@ -3,32 +3,34 @@ import { getCommentsApi } from 'pages/api/videoApi'
 import Loader from 'components/Loader';
 
 
-function View({ props }) {
+function View({ videos }) {
 
-    // const { id } = props.video
-    // const { title, tags, channelTitle, publishedAt, description, thumbnails } = props.video.snippet
+    const { id } = videos
+    const { title, tags, channelTitle, publishedAt, description, thumbnails } = videos.snippet
 
-    // const [comments, setComments] = useState([])
-    // const [isLoaded, setIsLoaded] = useState(false);
+    const [comments, setComments] = useState([])
+    const [isLoaded, setIsLoaded] = useState(false);
 
-    // const getComment = async() => {
-    //     setIsLoaded(true);
-	// 	const datas = await getCommentsApi(id, 25)
-	// 	setComments(datas.data.items)
-	// 	setIsLoaded(false);
-    // }
+    const getComment = async() => {
+        setIsLoaded(true);
+		const datas = await getCommentsApi(id, 25)
+		setComments(datas.data.items)
+		setIsLoaded(false);
+    }
 
-    // useEffect(() => {
-    //     getComment()
+    useEffect(() => {
+        getComment()
 
-    // }, [])
+    }, [])
+
+    console.log('props', videos)
+
     
-    console.log('view props', props)
 
 
     return (
         <>
-            {/* <div className='video-view-wrapper'>
+            <div className='video-view-wrapper'>
                 <div className='video-thumb'>
                     <div className="thumb" style={{ backgroundImage: `url(${thumbnails.default.url})` }}></div>
                 </div>
@@ -69,7 +71,7 @@ function View({ props }) {
                         </div>
                     </div>
                 </div>
-            </div> */}
+            </div>
         </>
     )
 }

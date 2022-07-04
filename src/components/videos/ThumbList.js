@@ -13,9 +13,15 @@ const ThumbList = ({ props }) => {
 	
 	const router = useRouter()
 
-	console.log(`this page is from ${router.pathname}`)
+	console.log(`this page is from`, props)
 
-	
+
+
+	if ( router.pathname === '/categories/[id]' ) {
+		console.log('path name .. /categories/[id]')
+	} else {
+		console.log('path name ..the others')
+	}
 
 	// const onIntersect = async ([entry], observer) => {
 	// 	if (entry.isIntersecting && !isLoaded) {
@@ -52,7 +58,12 @@ const ThumbList = ({ props }) => {
 			</div> */}
 			<section className="video-list">
 				{props.map((video, index) => (
-					<Thumb key={index} props={video} />
+					<Thumb 
+						key={index}
+						props={video} 
+						videoId={
+							router.pathname === '/categories/[id]' ? video.id.videoId : video.id
+						} />
 				))}
 			</section>
 			<div className='target-el' ref={setTarget}>
