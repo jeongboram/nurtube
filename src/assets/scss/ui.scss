@@ -134,7 +134,7 @@ footer {
 /* video list */
 .video-list {
 	display: grid;
-	grid-template-columns: repeat(auto-fill, minmax(25%, auto));
+	grid-template-columns: repeat(auto-fill, minmax(20%, auto));
 	gap: 10px 20px;
 	.video-thumb-wrapper {
 		max-width: 300px;
@@ -350,5 +350,20 @@ footer {
 	input {
 		background-color: #fff;
 		color: #000
+	}
+}
+
+
+@media only screen and (max-width: 1200px) {
+	.video-list {
+		grid-template-columns: repeat(auto-fill, minmax(30%, auto));
+		gap: 10px 20px;
+	}
+}
+
+@media only screen and (max-width: 870px) {
+	.video-list {
+		grid-template-columns: repeat(auto-fill, minmax(45%, auto));
+		gap: 10px 20px;
 	}
 }

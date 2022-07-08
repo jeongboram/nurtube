@@ -20,7 +20,7 @@ function View({ videos }) {
 
     useEffect(() => {
         getComment()
-
+        console.log('commentscomments', comments)
     }, [])
 
     console.log('props', videos)
@@ -77,3 +77,4 @@ function View({ videos }) {
 }
 
 export default View
+
