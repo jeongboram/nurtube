@@ -64,3 +64,11 @@ export const getChannelList = (num) => {
         method: 'get',
     })
 }
+
+//관련 영상
+export const getRelatedList = (id, num) => {
+    return instance({
+        url: `/search?part=snippet&relatedToVideoId=${id}&type=video&maxResults=${num}&key=${API_KEY}`,
+        method: 'get',
+    })
+}
