@@ -13,9 +13,6 @@ const ThumbList = ({ props }) => {
 	
 	const router = useRouter()
 
-	console.log(`this page is from`, props)
-
-
 
 	if ( router.pathname === '/categories/[id]' ) {
 		console.log('path name .. /categories/[id]')

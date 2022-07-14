@@ -20,12 +20,7 @@ function View({ videos }) {
 
     useEffect(() => {
         getComment()
-        console.log('commentscomments', comments)
     }, [])
-
-    console.log('props', videos)
-
-    
 
 
     return (

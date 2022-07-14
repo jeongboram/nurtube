@@ -30,7 +30,6 @@ const Thumb = observer(({ props, videoId }) => {
 	// console.log(`this page is from ${router.pathname}`)
 	// console.log('pp', props.id)
 
-	console.log('thubms id ', videoId)
 
 	const getCalDatas = () => {
 		const publishedDate = props.snippet.publishedAt;

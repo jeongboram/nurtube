@@ -3,6 +3,7 @@ import { useStores } from 'store/Context';
 import { toJS } from "mobx"; 
 import { observer } from 'mobx-react'
 import Thumb from 'components/videos/Thumb';
+import ThumbList from 'components/videos/ThumbList';
 
 
 const LikeVideo = observer(() => {
@@ -23,18 +24,12 @@ const LikeVideo = observer(() => {
 
     return (
         <>
-            <section className='video-list'>
+            <section className='contents'>
                 {
                     savedVideo.length === 0 && <div>좋아요한 동영상이 없어요</div>
                 }
                 {
-                    savedVideo.length > 0 && <>
-                        {
-                            savedVideo.map((video) => (
-                                <Thumb key={video.id} props={video} />
-                            ))
-                        }
-                    </>
+                    savedVideo.length > 0 && <ThumbList props={savedVideo} />
                 }
             </section>
         </>

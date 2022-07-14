@@ -8,7 +8,6 @@ function Categories() {
 
     const getVideosLists = async() => {
         const datas = await getChannelList(25)
-        console.log('getChannelList', datas.data.items)
         setChannels(datas.data.items)
     }
 
