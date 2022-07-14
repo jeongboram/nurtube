@@ -7,10 +7,12 @@ import { faSearch, faBars } from '@fortawesome/free-solid-svg-icons'
 
 function Header() {
 
-	const router = useRouter();
+	const router = useRouter()
+	
 	const [results, setResults] = useState([])
 
 	console.log('router', router)
+
 
 	const [q, setQ] = useState('')
 
@@ -20,22 +22,28 @@ function Header() {
 		setQ(val)
 	}
 
-	const onSubmit = async (e) => {
+	const onSubmit = (e) => {
 		e.preventDefault();
-		const datas = await getSearchResults(q, 50)
-		setResults(datas.data.items)
+		// let res = []
+		// const datas = await getSearchResults(q, 50)
+		// res.push(datas.data.items)
 		// router.routeChangeComplete(() => {
 		// 	setResults(datas.data.items)
 
 		// 	console.log('buttn clicked::: ', router)
 		// })
+
 		router.push({
 			pathname: '/search',
 			query: {
-				dataQ: results
+				dataQ: q
 			}
 		})
 	}
+
+	useEffect(() => {
+	}, [q, results])
+	
 
 	return (
 		<>
