@@ -7,6 +7,7 @@ import Related from 'components/Related';
 function View({ videos }) {
 
     const { id } = videos
+    const { videoId } = videos.id
     const { title, tags, channelTitle, publishedAt, description, thumbnails } = videos.snippet
 
     const [comments, setComments] = useState([])
@@ -70,7 +71,7 @@ function View({ videos }) {
                     </div>
                 </div>
                 <div className='video-related'>
-                    <Related id={id} />
+                    <Related id={id | videoId} />
                 </div>
             </div>
         </>

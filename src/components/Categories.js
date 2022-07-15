@@ -13,9 +13,7 @@ function Categories() {
 
     useEffect(() => {
         getVideosLists()
-
     }, [])
-    
 
     return (
         <>
@@ -33,19 +31,6 @@ function Categories() {
                                 </Link>
                             </li>
                         ))
-                    }
-                    {
-                        // channels.map((channel) => (
-                        //     <li key={channel.id}>
-                        //         <Link as={`/categories/${channel.title}`} 
-                        //             href={{
-                        //                 pathname: `/categories/[id]`, 
-                        //                 query: { data: JSON.stringify(channel)}
-                        //             }}>
-                        //             <a>{channel.title}</a>
-                        //         </Link>
-                        //     </li>
-                        // ))
                     }
                 </ul>
             </div>

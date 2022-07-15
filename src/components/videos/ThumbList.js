@@ -10,15 +10,7 @@ const ThumbList = ({ props }) => {
 	const [isLoaded, setIsLoaded] = useState(false);
 	
 	// let resultNum = 25
-	
 	const router = useRouter()
-
-
-	if ( router.pathname === '/categories/[id]' ) {
-		console.log('path name .. /categories/[id]')
-	} else {
-		console.log('path name ..the others')
-	}
 
 	// const onIntersect = async ([entry], observer) => {
 	// 	if (entry.isIntersecting && !isLoaded) {
@@ -48,11 +40,6 @@ const ThumbList = ({ props }) => {
 
 	return (
 		<>
-			{/* <div className="video-channels">
-				{props.map((video, index) => (
-					<span key={index}>{video.snippet.channelTitle}</span>
-				))}
-			</div> */}
 			<section className="video-list">
 				{props.map((video, index) => (
 					<Thumb 

@@ -9,9 +9,9 @@ const instance = axios.create({
 
 
 //리스트 가져오기
-export const getVideosApi = (resultNum) => {
+export const getVideosApi = (num) => {
     return instance({
-        url: `/videos?part=snippet&chart=mostPopular&maxResults=${resultNum}&key=${API_KEY}`,
+        url: `/videos?part=snippet&chart=mostPopular&maxResults=${num}&key=${API_KEY}`,
         method: 'get',
     })
 }

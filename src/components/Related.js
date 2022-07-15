@@ -20,7 +20,6 @@ function Related(id) {
 
     useEffect(() => {
         getVideosLists()
-        console.log('relatedVideos', relatedVideos)
     }, [])
 
 
@@ -28,11 +27,6 @@ function Related(id) {
         <>
             <h3>Related Videos</h3>
             {
-                // relatedVideos.map((video) => (
-                //     <>
-                //         <Thumb key={video.id.videoId} props={video} videoId={videoId} />
-                //     </>
-                // ))
                 <ThumbList props={relatedVideos} />
             }
         </>

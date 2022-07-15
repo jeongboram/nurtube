@@ -16,6 +16,8 @@ const LikeVideo = observer(() => {
         const likedata = toJS(videoStore.likeVideoList)
         setSavedVideo(likedata)
     } 
+
+    console.log('savedVideo', savedVideo)
     
     useEffect(() => {
         getLikeVideos()

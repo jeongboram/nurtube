@@ -9,11 +9,6 @@ function Header() {
 
 	const router = useRouter()
 	
-	const [results, setResults] = useState([])
-
-	console.log('router', router)
-
-
 	const [q, setQ] = useState('')
 
 
@@ -36,13 +31,13 @@ function Header() {
 		router.push({
 			pathname: '/search',
 			query: {
-				dataQ: q
+				keyword: q
 			}
 		})
 	}
 
 	useEffect(() => {
-	}, [q, results])
+	}, [q])
 	
 
 	return (
